@@ -66,12 +66,22 @@
     <h1>{{ title }}</h1>
 
     <div class="search-bar">
-        <form action="{% url 'pokemon:pokemon_detail' 'pokemon_name_or_id' %}" method="get">
-            <input type="text" name="q" placeholder="Search Pokémon by name or ID">
+        <form id="searchForm" method="get">
+            <input type="text" id="searchInput" name="q" placeholder="Search Pokémon by name or ID">
             <button type="submit">Search</button>
         </form>
         <p>Example: Try searching for "pikachu" or "25"</p>
     </div>
+
+    <script>
+        document.getElementById('searchForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const searchTerm = document.getElementById('searchInput').value.trim();
+            if (searchTerm) {
+                window.location.href = "{% url 'pokemon:pokemon_detail' 'placeholder' %}".replace('placeholder', searchTerm);
+            }
+        });
+    </script>
 
     {% if pokemons %}
         <div class="pokemon-grid">

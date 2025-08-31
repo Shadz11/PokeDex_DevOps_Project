@@ -1,8 +1,16 @@
-# Pokédex Project - Phase 1 Implementation
+# Pokédex Project - Complete Implementation
 
 ## 🎯 Project Overview
 
-This is a Django-based Pokédex application that integrates with the PokeAPI to display comprehensive Pokémon information. The project follows a DevOps roadmap with three phases, currently completing Phase 1 and transitioning to Phase 2.
+This is a Django-based Pokédex application that integrates with the PokeAPI to display comprehensive Pokémon information. The project follows a DevOps roadmap with three phases, with Phase 1 and 2 completed and Phase 3 planned.
+
+## 📚 Documentation
+
+- **[📖 Development Blog](blog.md)** - Complete development journey, technical decisions, and lessons learned
+- **[🚀 Run Instructions](run.md)** - Detailed guide for running the application locally and in production
+- **[📋 README](README.md)** - Project overview and quick start (this file)
+
+## 🎯 Quick Navigation
 
 ## 📋 Phase 1: Application Development - COMPLETED ✅
 
@@ -195,6 +203,8 @@ make run
 # Access the application
 # Open http://localhost:8000/pokemon/
 ```
+
+> 📖 **For detailed instructions, see [run.md](run.md)**
 
 ## 🚀 Development Workflow
 
@@ -449,12 +459,20 @@ make production-build  # Build production image
    - Data migration scripts
    - Backup and recovery procedures
 
+> 📖 **For detailed development journey and technical decisions, see [blog.md](blog.md)**
+
 ## 🤝 Contributing
 
 This project follows a phased development approach:
 1. **Phase 1**: Core application (✅ Complete)
 2. **Phase 2**: Containerization and CI/CD (✅ Complete)
 3. **Phase 3**: Cloud deployment and monitoring (📋 Planned)
+
+### 📚 Additional Resources
+- **[📖 Development Blog](blog.md)** - Complete technical journey and decisions
+- **[🚀 Run Instructions](run.md)** - Detailed setup and deployment guide
+- **[🐳 Docker Setup](Dockerfile)** - Container configuration
+- **[⚙️ CI/CD Pipeline](.github/workflows/ci.yml)** - Automated testing and deployment
 
 ## 📄 License
 
