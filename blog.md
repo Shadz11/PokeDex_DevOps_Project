@@ -3,10 +3,8 @@
 ## 📅 Project Timeline & Development Journey
 
 ### **Phase 1: Application Development** ✅ COMPLETED
-*Started: December 2024*
 
 #### Initial Setup & Framework Decision
-- **Date**: December 2024
 - **Decision**: Chose Django over FastAPI for the Pokédex application
 - **Reasoning**: 
   - Django provides full-stack solution with built-in admin, ORM, and templating
@@ -35,29 +33,29 @@ pokemon-pokedex-project/
 
 #### Core Features Implemented
 
-**1. PokeAPI Integration** (December 2024)
+**1. PokeAPI Integration**
 - Integrated with https://pokeapi.co/ for real-time Pokémon data
 - Implemented `fetch_pokemon_data()` function with error handling
 - Added timeout and comprehensive exception handling
 - Used `requests` library for HTTP calls
 
-**2. Pokédex Listing** (December 2024)
+**2. Pokédex Listing**
 - Created `pokemon_list()` view to display all 151 original Pokémon
 - Implemented responsive CSS Grid layout
 - Added Pokémon images, IDs, and names
 - Sorted by Pokédex number
 
-**3. Search Functionality** (December 2024)
+**3. Search Functionality**
 - Initial implementation with hardcoded form action (had issues)
 - Case-insensitive search by name or ID
 - Real-time API integration
 
-**4. Detailed Pokémon View** (December 2024)
+**4. Detailed Pokémon View**
 - Created `pokemon_detail()` view for individual Pokémon
 - Displayed complete stats, types, abilities, height, weight
 - Responsive design with clean UI
 
-**5. UI/UX Design** (December 2024)
+**5. UI/UX Design**
 - Clean, modern interface with CSS Grid
 - Hover effects and interactive elements
 - Mobile-friendly responsive design
@@ -65,32 +63,31 @@ pokemon-pokedex-project/
 
 #### Technical Challenges & Solutions
 
-**Challenge 1: Template Filter Error** (December 2024)
+**Challenge 1: Template Filter Error**
 - **Issue**: Invalid Django template filter `|div:"10"` causing 500 errors
 - **Solution**: Removed complex template filters and simplified height/weight display
 - **Files Modified**: `pokemon/templates/pokemon/pokemon_detail.html`
 
-**Challenge 2: Search Form Issues** (December 2024)
+**Challenge 2: Search Form Issues**
 - **Issue**: Search form was sending "pokemon_name_or_id" instead of actual search terms
 - **Solution**: Implemented JavaScript-based form handling with dynamic URL construction
 - **Files Modified**: `pokemon/templates/pokemon/pokemon_list.html`
 
-**Challenge 3: API Error Handling** (December 2024)
+**Challenge 3: API Error Handling**
 - **Issue**: PokeAPI calls failing silently causing 500 errors
 - **Solution**: Added comprehensive error handling with detailed logging
 - **Files Modified**: `pokemon/views.py`
 
-**Challenge 4: Unit Conversion** (December 2024)
+**Challenge 4: Unit Conversion**
 - **Issue**: PokeAPI returns height in decimeters and weight in hectograms, not user-friendly
 - **Solution**: Added unit conversion in views.py to display height in cm and weight in kg
 - **Files Modified**: `pokemon/views.py`, `pokemon/templates/pokemon/pokemon_detail.html`
 
 ### **Phase 2: Containerization & CI/CD** ✅ COMPLETED
-*Started: December 2024*
 
 #### Docker Implementation
 
-**Dockerfile Creation** (December 2024)
+**Dockerfile Creation**
 ```dockerfile
 FROM python:3.11-slim
 ENV PYTHONDONTWRITEBYTECODE=1
@@ -112,14 +109,14 @@ CMD ["gunicorn", "--bind", "0.0.0.0:8000", "pokedex_project.wsgi:application"]
 - **Layer Caching**: Copy requirements.txt first for efficient builds
 - **Security**: Slim base image to reduce attack surface
 
-**Dependencies Management** (December 2024)
+**Dependencies Management**
 ```txt
 Django>=4.2.0          # Web framework
 requests>=2.31.0       # HTTP library for PokeAPI calls
 gunicorn>=21.0.0       # Production WSGI server
 ```
 
-**Docker Compose Setup** (December 2024)
+**Docker Compose Setup**
 ```yaml
 version: '3.8'
 services:
@@ -143,7 +140,7 @@ services:
 
 #### CI/CD Pipeline Implementation
 
-**GitHub Actions Workflow** (December 2024)
+**GitHub Actions Workflow**
 - **File**: `.github/workflows/ci.yml`
 - **Triggers**: Push to main/develop branches, pull requests
 - **Steps**:
@@ -157,7 +154,7 @@ services:
 
 #### Production Configuration
 
-**Production Settings** (December 2024)
+**Production Settings**
 - **File**: `pokedex_project/production.py`
 - **Features**:
   - Security headers (HSTS, XSS protection, etc.)
@@ -165,14 +162,14 @@ services:
   - Comprehensive logging setup
   - Static files optimization
 
-**Environment Variables** (December 2024)
+**Environment Variables**
 - DEBUG configuration via environment
 - Settings module selection
 - Production-ready configurations
 
 #### Development Workflow Enhancements
 
-**Makefile Creation** (December 2024)
+**Makefile Creation**
 ```makefile
 .PHONY: help install test run build up down clean logs
 
@@ -196,7 +193,7 @@ production-run: ## Run production Docker image
 
 #### Testing Implementation
 
-**Django Tests** (December 2024)
+**Django Tests**
 - **File**: `pokemon/tests.py`
 - **Test Coverage**:
   - Pokédex listing view
@@ -206,7 +203,6 @@ production-run: ## Run production Docker image
 - **Mocking**: PokeAPI responses for reliable testing
 
 ### **Phase 3: Cloud Deployment & Monitoring** 📋 PLANNED
-*Planned: January 2025*
 
 #### Infrastructure as Code (Terraform)
 **Planned Components**:
@@ -282,7 +278,7 @@ production-run: ## Run production Docker image
    - Complete Pokémon statistics
    - Type information with visual tags
    - Ability details
-   - Physical attributes (height/weight)
+   - Physical attributes (height/weight in cm/kg)
    - Base stats display
 
 4. **User Experience**
@@ -408,6 +404,5 @@ make check
 
 ---
 
-**Last Updated**: December 2024  
 **Project Status**: Phase 1 & 2 Complete, Phase 3 Planned  
 **Next Milestone**: Cloud Deployment Setup
