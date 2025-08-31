@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }} Details - PokéDex</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; background-color: #f0f0f0; }
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        h1 { color: #333; margin-bottom: 10px; }
+        .pokemon-image {
+            width: 150px;
+            height: 150px;
+            margin-bottom: 15px;
+        }
+        .info-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            text-align: left;
+        }
+        .info-table th, .info-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+        .info-table th {
+            background-color: #f2f2f2;
+            width: 30%;
+        }
+        .back-link {
+            display: block;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        .error-message {
+            color: red;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        .tag {
+            display: inline-block;
+            background-color: #e0e0e0;
+            padding: 3px 8px;
+            border-radius: 4px;
+            margin: 2px;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        {% if error_message %}
+            <p class="error-message">{{ error_message }}</p>
+            <a href="{% url 'pokemon:pokemon_list' %}" class="back-link">Back to Pokémon List</a>
+        {% else %}
+            <h1>#{{ pokemon.id }} {{ pokemon.name }}</h1>
+            <img src="{{ pokemon.image_url }}" alt="{{ pokemon.name }}" class="pokemon-image">
+
+            <table class="info-table">
+                <tr>
+                    <th>Height</th>
+                    <td>{{ pokemon.height }} dm ({{ pokemon.height|add:"0"|div:"10" }} m)</td>
+                </tr>
+                <tr>
+                    <th>Weight</th>
+                    <td>{{ pokemon.weight }} hg ({{ pokemon.weight|add:"0"|div:"10" }} kg)</td>
+                </tr>
+                <tr>
+                    <th>Types</th>
+                    <td>
+                        {% for type in pokemon.types %}
+                            <span class="tag">{{ type }}</span>
+                        {% endfor %}
+                    </td>
+                </tr>
+                <tr>
+                    <th>Abilities</th>
+                    <td>
+                        {% for ability in pokemon.abilities %}
+                            <span class="tag">{{ ability }}</span>
+                        {% endfor %}
+                    </td>
+                </tr>
+                <tr>
+                    <th>Stats</th>
+                    <td>
+                        <ul style="list-style-type: none; padding: 0;">
+                            {% for stat in pokemon.stats %}
+                                <li><strong>{{ stat.name }}:</strong> {{ stat.value }}</li>
+                            {% endfor %}
+                        </ul>
+                    </td>
+                </tr>
+            </table>
+
+            <a href="{% url 'pokemon:pokemon_list' %}" class="back-link">Back to Pokémon List</a>
+        {% endif %}
+    </div>
+</body>
+</html>
